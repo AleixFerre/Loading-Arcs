@@ -3,11 +3,11 @@ Beautiful Loading Arcs Animation in p5.js
 
 ## Different types of trees
 
-![example](https://raw.githubusercontent.com/CatalaHD/Loading-Arcs/master/examples/all.gif)](https://catalahd.github.io/Loading-Arcs/)
+![example](https://raw.githubusercontent.com/CatalaHD/Loading-Arcs/master/frames/frame0.png)](https://catalahd.github.io/Loading-Arcs/)
 
 ## Editing
 
-You can easy see and edit the source code [here](https://editor.p5js.org/thecatalahd/sketches/eJ9yQ0hKc).
+You can easy see and edit the source code [here](https://editor.p5js.org/thecatalahd/sketches/j9D4IBrKL).
 
 ## Usage
 
