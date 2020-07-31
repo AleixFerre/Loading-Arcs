@@ -21,4 +21,4 @@ Please make sure to update tests as appropriate.
 
 ## License
 
-[MIT](https://github.com/CatalaHD/Random-Fractal-Tree/blob/master/LICENSE)
+[MIT](https://github.com/CatalaHD/Loading-Arcs/blob/master/LICENSE)
