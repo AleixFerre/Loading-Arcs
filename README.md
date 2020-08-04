@@ -1,7 +1,6 @@
 # Loading-Arcs
-Beautiful Loading Arcs Animation in p5.js
 
-## Different types of trees
+Beautiful Loading Arcs Animation in p5.js
 
 [![example](https://raw.githubusercontent.com/CatalaHD/Loading-Arcs/master/frames/frame0.png)](https://catalahd.github.io/Loading-Arcs/)
 
@@ -21,4 +20,4 @@ Please make sure to update tests as appropriate.
 
 ## License
 
-[MIT](https://github.com/CatalaHD/Random-Fractal-Tree/blob/master/LICENSE)
+[MIT](https://github.com/CatalaHD/Loading-Arcs/blob/master/LICENSE)

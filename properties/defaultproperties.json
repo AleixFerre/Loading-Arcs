@@ -1,0 +1,9 @@
+{
+  "increment": 2,
+  "thickness": 30,
+  "spacing": 60,
+  "innerSpace": 60,
+  "enableMidPoint": true,
+  "enableMidPointAlpha": false,
+  "transparency": "88"
+}
