@@ -15,7 +15,7 @@ let colors = ["#001524", "#006e80", "#ffecd1", "#ff7b00", "#852100"]; // The act
 
 // CIRCLE ATTRIBUTES
 let properties = { // The properties objet to save
-    increment: 2, // How much i increments over time 
+    increment: 2, // How much i increments over time
     thickness: 30, // strokeWeight property of the circles
     spacing: 60, // Spacing between the center
     innerSpace: 60, // Spacing between each other
@@ -37,6 +37,7 @@ let midPointAlphaCheckBox; // Midpoint Alpha check
 
 // BUTTONS
 let saveButton; // Save properties button
+let saveCanvasButton; // Save canvas button
 let selectFile; // Pick file input
 
 function setup() {
@@ -66,12 +67,17 @@ function setup() {
     midPointAlphaCheckBox = createCheckbox("Alpha value affects middle point", false);
     midPointAlphaCheckBox.changed(changeAlphaAffectMidPoint);
 
-    createDiv("<h3> SAVE-LOAD SYSTEM");
+    createDiv("<h3> SAVE-LOAD PROPERTIES </h3>");
 
     saveButton = createButton("Save properties");
     saveButton.mouseClicked(saveProperties);
 
     selectFile = createFileInput(loadProperties);
+
+    createDiv("<h3> SAVE CANVAS </h3>");
+
+    saveCanvasButton = createButton("Save png");
+    saveCanvasButton.mouseClicked(save_png);
 
     angleMode(DEGREES);
     fillCircles();
@@ -155,7 +161,6 @@ function saveProperties() {
 }
 
 function loadProperties(file) {
-
     if (!file) {
         // If there is no file
         console.error("No file selected!");
@@ -184,5 +189,8 @@ function loadProperties(file) {
     midPointAlphaCheckBox.value(obj.enableMidPointAlpha);
 
     console.log("File loaded succesfully", obj);
+}
 
+function save_png() {
+    saveCanvas("canvas", "png");
 }
