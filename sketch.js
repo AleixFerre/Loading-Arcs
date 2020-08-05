@@ -11,7 +11,16 @@ let delay = 50; // Delay in degrees between each circle and the next
 // COLOR
 // Using the pallete
 // https://coolors.co/001524-006e80-ffecd1-ff7b00-852100-ffffff
-let colors = ["#001524", "#006e80", "#ffecd1", "#ff7b00", "#852100"]; // The actual pallette
+let indexColor = 0;
+let pallette = [
+    ["#001524", "#006e80", "#ffecd1", "#ff7b00", "#852100"],
+    ["#264653", "#2A9D8F", "#E9C46A", "#F4A261", "#FFFFFF"],
+    ["#1F2041", "#4B3F72", "#FFC857", "#119DA4", "#FFFFFF"],
+    ["#314CB6", "#B68CB8", "#6461A0", "#EFBDEB", "#FFFFFF"],
+    ["#3D315B", "#444B6E", "#708B75", "#9AB87A", "#FFFFFF"],
+    ["#D8CFAF", "#E6B89C", "#ED9390", "#F374AE", "#333333"]
+]; // The actual pallette
+let colors = [...pallette[indexColor]];
 
 // CIRCLE ATTRIBUTES
 let properties = { // The properties objet to save
@@ -39,6 +48,8 @@ let midPointAlphaCheckBox; // Midpoint Alpha check
 let saveButton; // Save properties button
 let saveCanvasButton; // Save canvas button
 let selectFile; // Pick file input
+let selectPallette; // Select pallette option
+let colorsInputs = []; // List of inputs to make the custom color pallette
 
 function setup() {
     createDiv("<h1> Loading Arcs </h1>");
@@ -66,6 +77,24 @@ function setup() {
 
     midPointAlphaCheckBox = createCheckbox("Alpha value affects middle point", false);
     midPointAlphaCheckBox.changed(changeAlphaAffectMidPoint);
+
+    createDiv("<h3> SELECT YOUR PREFERRED PALLETTE </h3>");
+    selectPallette = createSelect();
+    for (let i = 0; i < pallette.length; i++) {
+        selectPallette.option("Pallette " + (i + 1)); // Index n
+    }
+    selectPallette.changed(changePallette);
+
+    createDiv("<h4> ...OR MAKE YOUR OWN </h4>");
+    colorsInputs.push(createInput(backgroundColor, "text"));
+    for (let i = 0; i < 4; i++) {
+        colorsInputs.push(createInput(colors[i], "text"));
+    }
+    let customColorButton = createButton("Change color");
+    customColorButton.mouseClicked(customPallette);
+    let importColorsButton = createButton("Import colors from pallette");
+    importColorsButton.mouseClicked(importColors);
+
 
     createDiv("<h3> SAVE-LOAD PROPERTIES </h3>");
 
@@ -142,6 +171,30 @@ function changeAlphaAffectMidPoint() {
 function fillCircles() {
     for (let i = 0; i < colors.length; i++) {
         circles.push(new Circle(i * properties.spacing + 100, i * delay, colors[i] + properties.transparency));
+    }
+}
+
+// Function that puts the actual pallette colorts into the input texts
+function importColors() {
+    for (let i = 0; i < 5; i++) {
+        colorsInputs[i].value(pallette[indexColor][i]);
+    }
+}
+
+// Function that changes the actual pallette
+function changePallette() {
+    let val = selectPallette.value();
+    indexColor = parseInt(val.substring(val.length - 1, val.length)) - 1;
+    var tempCol = [...pallette[indexColor]]; // We make a copy
+    backgroundColor = tempCol.shift();
+    colors = tempCol;
+}
+
+// Function that changes the actual pallette to the custom inputs
+function customPallette() {
+    backgroundColor = colorsInputs[0].value();
+    for (let i = 0; i < 4; i++) {
+        colors[i] = colorsInputs[i + 1].value();
     }
 }
 
