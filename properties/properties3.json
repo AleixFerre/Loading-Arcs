@@ -1,9 +1,16 @@
 {
   "increment": 2,
   "thickness": 30,
-  "spacing": 252,
-  "innerSpace": 0,
-  "enableMidPoint": false,
+  "spacing": 60,
+  "innerSpace": 60,
+  "enableMidPoint": true,
   "enableMidPointAlpha": false,
-  "transparency": "b0"
+  "transparency": "88",
+  "pallette": [
+    "#314CB6",
+    "#B68CB8",
+    "#6461A0",
+    "#EFBDEB",
+    "#FFFFFF"
+  ]
 }

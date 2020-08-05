@@ -208,11 +208,19 @@ function changeSpacing() {
     }
 }
 
+// Function that saves the properties of the actual setup
 function saveProperties() {
-    console.log(properties);
-    saveJSON(properties, "properties.json");
+    let clone = {
+        ...properties
+    };
+    let colorsClone = [...colors];
+    colorsClone.unshift(backgroundColor);
+    clone.pallette = colorsClone;
+    console.log(clone);
+    saveJSON(clone, "properties.json");
 }
 
+// Function that loads the properties object
 function loadProperties(file) {
     if (!file) {
         // If there is no file
@@ -232,6 +240,11 @@ function loadProperties(file) {
         return false;
     }
 
+    if (!obj.pallette) {
+        console.error("Use the new pallette formatting!");
+        return false;
+    }
+
     incSlider.value(obj.increment);
     spacingSlider.value(obj.spacing);
     thicknessSlider.value(obj.thickness);
@@ -241,6 +254,12 @@ function loadProperties(file) {
     midPointShowCheckBox.value(obj.enableMidPoint);
     midPointAlphaCheckBox.value(obj.enableMidPointAlpha);
 
+    backgroundColor = obj.pallette[0];
+    colorsInputs[0].value(obj.pallette[0]);
+    for (let i = 1; i < 5; i++) {
+        colorsInputs[i].value(obj.pallette[i]);
+        colors[i] = obj.pallette[i];
+    }
     console.log("File loaded succesfully", obj);
 }
 
