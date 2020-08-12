@@ -86,9 +86,9 @@ function setup() {
     selectPallette.changed(changePallette);
 
     createDiv("<h4> ...OR MAKE YOUR OWN </h4>");
-    colorsInputs.push(createInput(backgroundColor, "text"));
+    colorsInputs.push(createColorPicker(backgroundColor));
     for (let i = 0; i < 4; i++) {
-        colorsInputs.push(createInput(colors[i], "text"));
+        colorsInputs.push(createColorPicker(colors[i]));
     }
     let customColorButton = createButton("Change color");
     customColorButton.mouseClicked(customPallette);
